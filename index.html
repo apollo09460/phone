@@ -8,62 +8,74 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            justify-content: center;
             margin: 0;
             padding: 20px;
             background-color: #f5f5f5;
         }
-        .form-container {
-            width: 50%;
-            padding: 20px;
+        .container {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            gap: 20px;
+        }
+        .form-container, .preview-container {
+            flex: 1;
+            padding: 15px;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .preview-container {
-            width: 45%;
-            margin-left: 20px;
-            padding: 20px;
             background-color: #1e1e1e;
-            border-radius: 8px;
             color: #e0e0e0;
             font-family: monospace;
             white-space: pre;
             overflow: auto;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             position: relative;
         }
         h1 {
-            font-size: 1.5em;
+            font-size: 1.3em;
             margin-top: 0;
             color: #333;
         }
         .form-group {
-            margin-bottom: 15px;
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .form-group textarea {
+            width: 100%;
         }
         label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            width: 120px;
+            font-size: 0.9em;
             color: #555;
         }
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 8px;
+        input, textarea {
+            flex: 1;
+            padding: 6px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box;
         }
-        .button-group {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
+        textarea {
+            height: 60px;
+        }
+        .action-group {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .action-group label {
+            display: block;
+            width: 100%;
+            margin-bottom: 5px;
         }
         button {
-            padding: 8px 15px;
+            padding: 6px 12px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 0.9em;
         }
         #clearBtn {
             background-color: #f44336;
@@ -73,25 +85,20 @@
             background-color: #4CAF50;
             color: white;
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 10px;
+            right: 10px;
         }
         .preview-title {
             color: #4CAF50;
-            margin-top: 0;
-            margin-right: 80px;
-            display: inline-block;
-        }
-        .phone-title {
-            color: #ff9800;
-            margin-bottom: 15px;
+            margin: 0 40px 10px 0;
+            font-size: 1.1em;
         }
         .copy-confirmation {
             position: absolute;
-            top: 15px;
-            right: 100px;
+            top: 10px;
+            right: 70px;
             color: #4CAF50;
-            font-weight: bold;
+            font-size: 0.9em;
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -101,63 +108,61 @@
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Form Input</h1>
-        <div class="form-group">
-            <label for="phoneNumber">Phone number:</label>
-            <input type="text" id="phoneNumber">
-        </div>
-        <div class="form-group">
-            <label for="verifier">Verifier:</label>
-            <input type="text" id="verifier">
-        </div>
-        <div class="form-group">
-            <label for="concern">Concern:</label>
-            <input type="text" id="concern">
-        </div>
-        <div class="form-group">
-            <label for="transactionStatus">Transaction Status:</label>
-            <input type="text" id="transactionStatus">
-        </div>
-        <div class="form-group">
-            <label for="lastPartnerError">Last Partner Error:</label>
-            <input type="text" id="lastPartnerError">
-        </div>
-        <div class="form-group">
-            <label for="reference">Reference#:</label>
-            <input type="text" id="reference">
-        </div>
-        <div class="form-group">
-            <label for="cii">CII:</label>
-            <input type="text" id="cii">
-        </div>
-        <div class="form-group">
-            <label for="actionTaken">Action taken:</label>
-            <textarea id="actionTaken" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="nextCSA">Next CSA:</label>
-            <input type="text" id="nextCSA">
-        </div>
-        <div class="form-group">
-            <label for="sfCase">SF case:</label>
-            <input type="text" id="sfCase">
-        </div>
-        <div class="form-group">
-            <label for="partnerSF">Partner SF:</label>
-            <input type="text" id="partnerSF">
-        </div>
-        
-        <div class="button-group">
+    <div class="container">
+        <div class="form-container">
+            <h1>Form Input</h1>
+            <div class="form-group">
+                <label for="phoneNumber">Phone number:</label>
+                <input type="text" id="phoneNumber">
+            </div>
+            <div class="form-group">
+                <label for="verifier">Verifier:</label>
+                <input type="text" id="verifier">
+            </div>
+            <div class="form-group">
+                <label for="concern">Concern:</label>
+                <input type="text" id="concern">
+            </div>
+            <div class="form-group">
+                <label for="transactionStatus">Transaction Status:</label>
+                <input type="text" id="transactionStatus">
+            </div>
+            <div class="form-group">
+                <label for="lastPartnerError">Last Partner Error:</label>
+                <input type="text" id="lastPartnerError">
+            </div>
+            <div class="form-group">
+                <label for="reference">Reference#:</label>
+                <input type="text" id="reference">
+            </div>
+            <div class="form-group">
+                <label for="cii">CII:</label>
+                <input type="text" id="cii">
+            </div>
+            <div class="action-group">
+                <label for="actionTaken">Action taken:</label>
+                <textarea id="actionTaken" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="nextCSA">Next CSA:</label>
+                <input type="text" id="nextCSA">
+            </div>
+            <div class="form-group">
+                <label for="sfCase">SF case:</label>
+                <input type="text" id="sfCase">
+            </div>
+            <div class="form-group">
+                <label for="partnerSF">Partner SF:</label>
+                <input type="text" id="partnerSF">
+            </div>
             <button id="clearBtn">Clear All</button>
         </div>
-    </div>
-    
-    <div class="preview-container">
-        <h2 class="preview-title">Live Preview</h2>
-        <div class="copy-confirmation" id="copyConfirmation">Copied!</div>
-        <button id="copyBtn">Copy All</button>
-        <div id="livePreview">
+        
+        <div class="preview-container">
+            <h2 class="preview-title">Live Preview</h2>
+            <div class="copy-confirmation" id="copyConfirmation">Copied!</div>
+            <button id="copyBtn">Copy</button>
+            <div id="livePreview">
 *****Phone**********
 
 Phone number: 
@@ -172,6 +177,7 @@ Action taken:
 Next CSA: 
 SF case: 
 Partner SF: 
+            </div>
         </div>
     </div>
 
@@ -238,7 +244,6 @@ Partner SF: ${partnerSF}`;
         document.getElementById('clearBtn').addEventListener('click', clearAll);
         document.getElementById('copyBtn').addEventListener('click', copyAll);
         
-        // Update preview when any input changes
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('input', updatePreview);
